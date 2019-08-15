@@ -11,10 +11,8 @@ Aardvark.Application.Slim.Vulkan
 Aardvark.SceneGraph
 Aardvark.SceneGraph.IO
 
-#if __Media__
 Aardvark.Service
 Aardvark.UI
 Aardvark.UI.Primitives
 Aardvark.Compiler.DomainTypes.MSBuild
 Aardium
-#endif

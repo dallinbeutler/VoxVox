@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -14,11 +14,14 @@
     <RunWorkingDirectory>$(OutputPath)\netcoreapp2.0</RunWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    #if __Media__
-	<Compile Include="Model.fs" />
-	<Compile Include="Model.g.fs" />
+	<EmbeddedResource Include="spectrum.css">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</EmbeddedResource>
+	<EmbeddedResource Include="spectrum.js">
+	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	</EmbeddedResource>
+	<Compile Include="MainState.fs" />
 	<Compile Include="App.fs" />
-	#endif
     <Compile Include="Program.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />

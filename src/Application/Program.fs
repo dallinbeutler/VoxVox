@@ -1,4 +1,4 @@
-open __PROJECT_NAME__
+open Application
 
 open Aardium
 open Aardvark.Service
@@ -22,6 +22,8 @@ let main args =
 
     WebPart.startServer 4321 [
         MutableApp.toWebPart' app.Runtime false (App.start App.app)
+        Reflection.assemblyWebPart (System.Reflection.Assembly.GetEntryAssembly())
+
     ] |> ignore
     
     Aardium.run {
@@ -30,5 +32,5 @@ let main args =
         height 768
         url "http://localhost:4321/"
     }
-
     0
+    
