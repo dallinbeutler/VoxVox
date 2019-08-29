@@ -18,9 +18,9 @@ type VoxOct =
         member this.III = this.Points.[7]
         member this.At (X:bool) (Y:bool) (Z:bool) =
             this.Points.[(if X then 4 else 0) + (if Y then 2 else 0) + (if Z then 1 else 0)]
-        member this.col (X:int)(Y:int)(Z:int)  =
-            match (this.At ((X % 2) == 1) (Y % 2) (Z % 2)) with
-            |
+        //member this.col (X:int)(Y:int)(Z:int)  =
+        //    match (this.At ((X % 2) == 1) (Y % 2) (Z % 2)) with
+        //    |
             
     end
 and Node = 
@@ -29,3 +29,9 @@ and Node =
 
 //let checkColl (point:V3i) (scale: int) =
 //   if point.X > 1 then 
+
+type VoxOct2 =
+    {
+        hasChildren:bool
+        subDermal:bool
+    }
