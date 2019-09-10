@@ -33,5 +33,8 @@ and Node =
 type VoxOct2 =
     {
         hasChildren:bool
-        subDermal:bool
+        //Maybe only transparent is needed?
+        //subDermal:bool 
+        //Stored in the material?
+        transparent:bool
     }

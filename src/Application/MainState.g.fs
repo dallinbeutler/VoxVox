@@ -17,11 +17,15 @@ module Mutable =
         let _cameraState = Aardvark.UI.Primitives.Mutable.MCameraControllerState.Create(__initial.cameraState)
         let _points = ResetMod.Create(__initial.points)
         let _SelectedColor = Aardvark.UI.Mutable.MColorInput.Create(__initial.SelectedColor)
+        let _HoveredVox = MOption.Create(__initial.HoveredVox)
+        let _Plane = ResetMod.Create(__initial.Plane)
         
         member x.currentModel = _currentModel :> IMod<_>
         member x.cameraState = _cameraState
         member x.points = _points :> IMod<_>
         member x.SelectedColor = _SelectedColor
+        member x.HoveredVox = _HoveredVox :> IMod<_>
+        member x.Plane = _Plane :> IMod<_>
         
         member x.Current = __current :> IMod<_>
         member x.Update(v : MainState.State) =
@@ -32,6 +36,8 @@ module Mutable =
                 Aardvark.UI.Primitives.Mutable.MCameraControllerState.Update(_cameraState, v.cameraState)
                 ResetMod.Update(_points,v.points)
                 Aardvark.UI.Mutable.MColorInput.Update(_SelectedColor, v.SelectedColor)
+                MOption.Update(_HoveredVox, v.HoveredVox)
+                ResetMod.Update(_Plane,v.Plane)
                 
         
         static member Create(__initial : MainState.State) : MState = MState(__initial)
@@ -71,4 +77,16 @@ module Mutable =
                     override x.Get(r) = r.SelectedColor
                     override x.Set(r,v) = { r with SelectedColor = v }
                     override x.Update(r,f) = { r with SelectedColor = f r.SelectedColor }
+                }
+            let HoveredVox =
+                { new Lens<MainState.State, Microsoft.FSharp.Core.Option<Aardvark.Base.V3d>>() with
+                    override x.Get(r) = r.HoveredVox
+                    override x.Set(r,v) = { r with HoveredVox = v }
+                    override x.Update(r,f) = { r with HoveredVox = f r.HoveredVox }
+                }
+            let Plane =
+                { new Lens<MainState.State, Aardvark.Base.Box3d>() with
+                    override x.Get(r) = r.Plane
+                    override x.Set(r,v) = { r with Plane = v }
+                    override x.Update(r,f) = { r with Plane = f r.Plane }
                 }
