@@ -22,7 +22,6 @@
 	  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	</EmbeddedResource>
 	<Compile Include="MainState.fs" />
-	<Compile Include="StencilAreaMasking.fs" />
 	<Compile Include="App.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
